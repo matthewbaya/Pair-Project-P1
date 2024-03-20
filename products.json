@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Gucci Picah",
+        "price": 3200000,
+        "description": "baju pecahan tekstur guci",
+        "CategoryId": 1
+    },
+    {
+        "name": "Nike Air Asia",
+        "price": 6200000,
+        "description": "ini sepatu bisa bikin terbang",
+        "CategoryId": 2
+    },
+    {
+        "name": "ROG Phone 69",
+        "price": 6900000,
+        "description": "hape yang bisa menegakan keadilan",
+        "CategoryId": 3
+    },
+    {
+        "name": "Scarlett",
+        "price": 700000,
+        "description": "hanya produk skincare normal",
+        "CategoryId": 4
+    },
+    {
+        "name": "Pedang Excalibur",
+        "price": 9000000,
+        "description": "pedang bekas",
+        "CategoryId": 5
+    }
+]

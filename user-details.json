@@ -1,0 +1,62 @@
+[
+    {
+        "email": "gsmidmore0@sbwire.com",
+        "password": "admin1",
+        "role": "admin",
+        "UserId": 1
+    },
+    {
+        "email": "emagor1@amazon.com",
+        "password": "admin2",
+        "role": "admin",
+        "UserId": 2
+    },
+    {
+        "email": "gteggin2@etsy.com",
+        "password": "customer1",
+        "role": "customer",
+        "UserId": 3
+    },
+    {
+        "email": "astrognell3@europa.eu",
+        "password": "customer2",
+        "role": "customer",
+        "UserId": 4
+    },
+    {
+        "email": "klively4@nih.gov",
+        "password": "customer3",
+        "role": "customer",
+        "UserId": 5
+    },
+    {
+        "email": "lhuxter5@cdc.gov",
+        "password": "customer4",
+        "role": "customer",
+        "UserId": 6
+    },
+    {
+        "email": "acorington6@wikipedia.org",
+        "password": "customer5",
+        "role": "customer",
+        "UserId": 7
+    },
+    {
+        "email": "nremington7@amazon.com",
+        "password": "customer6",
+        "role": "̗̺͖̹̯͓customer",
+        "UserId": 8
+    },
+    {
+        "email": "sorganer8@1688.com",
+        "password": "customer7",
+        "role": "customer",
+        "UserId": 9
+    },
+    {
+        "email": "nbowle9@slate.com",
+        "password": "customer8",
+        "role": "customer",
+        "UserId": 10
+    }
+]
