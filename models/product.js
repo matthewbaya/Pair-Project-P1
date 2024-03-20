@@ -16,20 +16,21 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  Product.init(
-    {
-      name: DataTypes.STRING,
-      price: DataTypes.INTEGER,
-      description: DataTypes.STRING,
-      CategoryId: {
+
+  Product.init({
+    name: DataTypes.STRING,
+    price: DataTypes.INTEGER,
+    description: DataTypes.STRING,
+    CategoryId: {
         type: DataTypes.INTEGER,
         references: { model: "Category", key: "id" },
       },
-    },
-    {
-      sequelize,
-      modelName: "Product",
-    }
-  );
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
+  }, {
+    sequelize,
+    modelName: 'Product',
+  });
+
   return Product;
 };

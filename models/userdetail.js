@@ -12,20 +12,21 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.User);
     }
   }
-  UserDetail.init(
-    {
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      role: DataTypes.STRING,
-      UserId: {
+
+  UserDetail.init({
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    role: DataTypes.STRING,
+    UserId: {
         type: DataTypes.INTEGER,
         references: { model: "Users", key: "id" },
       },
-    },
-    {
-      sequelize,
-      modelName: "UserDetail",
-    }
-  );
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
+  }, {
+    sequelize,
+    modelName: 'UserDetail',
+  });
+
   return UserDetail;
 };

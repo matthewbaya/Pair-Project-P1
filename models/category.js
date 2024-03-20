@@ -12,14 +12,15 @@ module.exports = (sequelize, DataTypes) => {
       Category.hasMany(models.Product, { foreignKey: "CategoryId" });
     }
   }
-  Category.init(
-    {
-      name: DataTypes.STRING,
-    },
-    {
-      sequelize,
-      modelName: "Category",
-    }
-  );
+
+  Category.init({
+    name: DataTypes.STRING,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
+  }, {
+    sequelize,
+    modelName: 'Category',
+  });
+
   return Category;
 };

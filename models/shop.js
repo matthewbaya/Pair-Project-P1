@@ -13,15 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       Shop.belongsTo(models.Product);
     }
   }
-  Shop.init(
-    {
-      UserId: DataTypes.INTEGER,
-      ProductId: DataTypes.INTEGER,
-    },
-    {
-      sequelize,
-      modelName: "Shop",
-    }
-  );
+
+  Shop.init({
+    UserId: DataTypes.INTEGER,
+    ProductId: DataTypes.INTEGER,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
+  }, {
+    sequelize,
+    modelName: 'Shop',
+  });
+
   return Shop;
 };

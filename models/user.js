@@ -16,16 +16,17 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  User.init(
-    {
-      name: DataTypes.STRING,
-      address: DataTypes.STRING,
-      dateOfBirth: DataTypes.DATE,
-    },
-    {
-      sequelize,
-      modelName: "User",
-    }
-  );
+
+  User.init({
+    name: DataTypes.STRING,
+    address: DataTypes.STRING,
+    dateOfBirth: DataTypes.DATE,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
+  }, {
+    sequelize,
+    modelName: 'User',
+  });
+
   return User;
 };
