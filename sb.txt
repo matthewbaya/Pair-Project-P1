@@ -1,0 +1,14 @@
+npx sequelize model:create --name Category --attributes name:string
+npx sequelize model:create --name User --attributes name:string,address:string,dateOfBirth:string
+npx sequelize model:create --name UserDetail --attributes email:string,password:string,role:string,UserId:integer
+npx sequelize model:create --name Shop --attributes UserId:integer,ProductId:integer
+npx sequelize model:create --name Product --attributes name:string,price:integer,description:string
+
+npx sequelize  migration:create --name AddFKProduct
+
+    queryInterface.addColumn('Products', 'CategoryId', Sequelize.INTEGER, {
+      references:{
+        model: "Categories",
+        key: 'id'
+      }
+   });
