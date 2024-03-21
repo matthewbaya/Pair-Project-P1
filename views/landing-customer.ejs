@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Landing Page</h1>
+    <h1>Welcome $user</h1>
+    <p>Search</p>
+    <form action="/" method="get">
+        <input type="text" name="searchTitle" placeholder="search by product name">
+        <input type="text" name="searchArtist" placeholder="search by category">
+        <button type="submit">Search</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Category</th>
+            </tr>
+            <% products.forEach((e, index)=> { %>
+                <tr>
+                    <td>
+                        <%= index + 1 %>
+                    </td>
+                    <td>
+                        <%= e.name %>
+                    </td>
+                    <td>
+                        <%= e.price %>
+                    </td>
+                    <td>
+                        <%= e.description %>
+                    </td>
+                    <td>
+                        <%= e.Category.name %>
+                    </td>
+                </tr>
+                <% }) %>
+        </thead>
+    </table>
+    <a href=""><button>Admin Page</button></a>
+</body>
+
+</html>
