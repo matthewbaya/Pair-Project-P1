@@ -4,19 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
 </head>
 
 <body>
-    <form action="/login" method="post">
-        <label for="email">Email</label>
-        <input type="text" id="email" name="email">
-        <label for="password">Password</label>
-        <input type="text" id="password" name="password">
-        <button type="submit" class="btn btn-primary">Login</button>
-        <a name="" id="" class="btn btn-primary" href="/register" role="button">Register</a>
-    </form>
-
+    <% if (error) { %>
+        <p style="color: red;">
+            <%= error %>
+        </p>
+        <% } %>
+            <form action="/login" method="post">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <button type="submit">Login</button>
+                <button type="button" onclick="window.location.href='/register'">Register</button>
+            </form>
 </body>
 
 </html>

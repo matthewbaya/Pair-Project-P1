@@ -5,8 +5,10 @@ class UserCtrl {
   //* ─── Main Page ───────────────────────────────────────────────────────
   static async showUser(req, res) {
     try {
-      let user = await Product.findOne({ where });
-      res.send(user);
+      let user = await Product.findOne({ where: { id: req.session.UserId } });
+      // res.send(user);
+
+      res.render("user-page", { user });
     } catch (error) {
       console.log(error);
       res.send(error.message);
