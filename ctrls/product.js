@@ -13,6 +13,7 @@ class ProductCtrl {
   static async showProducts(req, res) {
     try {
       let { searchProduct, searchCategory } = req.query;
+      let { name } = req.query;
       let options = {
         include: { model: Category, where: {} },
         order: [["CategoryId", "ASC"]],
@@ -28,7 +29,7 @@ class ProductCtrl {
       }
 
       let products = await Product.findAll(options);
-      res.render("landing-admin", { products, formatCurrency });
+      res.render("landing-admin", { products, name, formatCurrency });
     } catch (error) {
       console.log(error);
       res.send(error.message);
@@ -64,8 +65,10 @@ class ProductCtrl {
   static async deleteProduct(req, res) {
     try {
       let { productId } = req.params;
+
+      let product = Product.findByPk(productId);
       await Product.destroy({ where: { id: productId } });
-      res.redirect("/");
+      res.redirect(`/products?name=${product.name}`);
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -103,6 +106,12 @@ class ProductCtrl {
   static async customerPage(req, res) {
     try {
       let { searchProduct, searchCategory } = req.query;
+      let num = (req.session.UserId = user.id);
+      const user = await User.findOne({
+        include: Profile,
+        where: { num },
+      });
+      console.log(user);
       let options = {
         include: { model: Category, where: {} },
         order: [["CategoryId", "ASC"]],
