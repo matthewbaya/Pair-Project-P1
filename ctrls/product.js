@@ -5,8 +5,8 @@ const session = require("express-session");
 const { Product, User, Category } = require("../models");
 const product = require("../models/product");
 const { query } = require("express");
-const {formatCurrency} = require("../helpers/formater");
-const { render } = require('ejs');
+const { formatCurrency } = require("../helpers/formater");
+const { render } = require("ejs");
 
 class ProductCtrl {
   //* ─── Main Page ───────────────────────────────────────────────────────
@@ -48,16 +48,15 @@ class ProductCtrl {
     }
   }
 
-  //* ─── Save Product ────────────────────────────────────────────────────
   static async saveProduct(req, res) {
     try {
       let { name, price, description, CategoryId } = req.body;
-      let picture = req.file.picture;
+      let picture = req.file;
       await Product.create({ name, price, description, CategoryId, picture });
       res.redirect("/");
     } catch (error) {
       console.log(error);
-      res.send(error);
+      res.send(error.message);
     }
   }
 
@@ -125,7 +124,7 @@ class ProductCtrl {
       }
 
       let products = await Product.findAll(options);
-      res.render("landing-customer", { products, formatCurrency});
+      res.render("landing-customer", { products, formatCurrency });
     } catch (error) {
       console.log(error);
       res.send(error.message);
@@ -136,7 +135,7 @@ class ProductCtrl {
     try {
       let { productId } = req.params;
       let product = await Product.findByPk(productId);
-      res.render('detail-product', {product})
+      res.render("detail-product", { product });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -145,7 +144,7 @@ class ProductCtrl {
 
   static async order(req, res) {
     try {
-      res.send('masuk')
+      res.send("masuk");
     } catch (error) {
       console.log(error);
       res.send(error.message);
