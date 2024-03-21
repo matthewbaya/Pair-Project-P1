@@ -11,22 +11,25 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasOne(models.UserDetail, { foreignKey: "UserId" });
       User.belongsToMany(models.Product, {
-        through: "Shops",
+        through: models.Shop,
         onDelete: "cascade",
       });
     }
   }
 
-  User.init({
-    name: DataTypes.STRING,
-    address: DataTypes.STRING,
-    dateOfBirth: DataTypes.DATE,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
+  User.init(
+    {
+      name: DataTypes.STRING,
+      address: DataTypes.STRING,
+      dateOfBirth: DataTypes.DATE,
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "User",
+    }
+  );
 
   return User;
 };
