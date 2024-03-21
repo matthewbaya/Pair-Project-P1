@@ -19,9 +19,27 @@ module.exports = (sequelize, DataTypes) => {
 
   User.init(
     {
-      name: DataTypes.STRING,
-      address: DataTypes.STRING,
-      dateOfBirth: DataTypes.DATE,
+      name: {
+      type: DataTypes.STRING,
+      validate : {
+        notEmpty: false,
+        notNull: false
+      }
+      },
+      address: {
+        type: DataTypes.STRING,
+        validate : {
+          notEmpty: false,
+          notNull: false
+        }
+        },
+      dateOfBirth: {
+        type: DataTypes.DATE,
+        validate : {
+          notEmpty: false,
+          notNull: false
+        }
+        },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
     },

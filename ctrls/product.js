@@ -106,12 +106,10 @@ class ProductCtrl {
   static async customerPage(req, res) {
     try {
       let { searchProduct, searchCategory } = req.query;
-      let num = (req.session.UserId = user.id);
-      const user = await User.findOne({
-        include: Profile,
-        where: { num },
-      });
-      console.log(user);
+      // const user = await User.findOne({
+      //   include: Profile,
+      //   where: { num },
+      // });
       let options = {
         include: { model: Category, where: {} },
         order: [["CategoryId", "ASC"]],

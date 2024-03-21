@@ -8,21 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
+        body {
+            background-color: darkgrey;
         }
     </style>
 </head>
@@ -31,12 +18,12 @@
     <div class="container mt-3">
         <a href="/">page admin</a>
         <h1><span style="color: red;">CUSTOMER </span>PAGE</h1>
-        <h1>Welcome $Customer</h1>
+        <h1>Welcome</h1>
 
         <form action="/products/customer" method="get">
             <div class="row">
                 <div class="col-3 mb-3">
-                    <input type="text" name="searchTitle" placeholder="search product" class="form-control">
+                    <input type="text" name="searchProduct" placeholder="search product" class="form-control">
                 </div>
                 <div class="col-3 mb-3">
                     <input type="text" name="searchCategory" placeholder="search by category" class="form-control">
