@@ -6,6 +6,7 @@ class ProductCtrl {
   static async showProducts(req, res) {
     try {
       let products = await Product.findAll();
+      // res.render('main', {products})
       res.send(products);
     } catch (error) {
       console.log(error);
