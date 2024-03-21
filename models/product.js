@@ -11,26 +11,29 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Product.belongsTo(models.Category);
       Product.belongsToMany(models.User, {
-        through: "Shops",
+        through: models.Shop,
         onDelete: "cascade",
       });
     }
   }
 
-  Product.init({
-    name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    description: DataTypes.STRING,
-    CategoryId: {
+  Product.init(
+    {
+      name: DataTypes.STRING,
+      price: DataTypes.INTEGER,
+      description: DataTypes.STRING,
+      CategoryId: {
         type: DataTypes.INTEGER,
         references: { model: "Category", key: "id" },
       },
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'Product',
-  });
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "Product",
+    }
+  );
 
   return Product;
 };
