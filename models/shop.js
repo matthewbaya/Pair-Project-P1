@@ -9,20 +9,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Shop.belongsTo(models.User);
-      Shop.belongsTo(models.Product);
+      Shop.belongsTo(models.User, { foreignKey: "UserId" });
+      Shop.belongsTo(models.Product, { foreignKey: "ProductId" });
     }
   }
 
-  Shop.init({
-    UserId: DataTypes.INTEGER,
-    ProductId: DataTypes.INTEGER,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'Shop',
-  });
+  Shop.init(
+    {
+      UserId: DataTypes.INTEGER,
+      ProductId: DataTypes.INTEGER,
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "Shop",
+    }
+  );
 
   return Shop;
 };
