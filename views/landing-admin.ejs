@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/views/landing-customer.ejs">page customer</a>
+    <h1>Landing Page</h1>
+    <h1>Welcome $Admin</h1>
+    <form action="/" method="get">
+        <input type="text" name="searchTitle" placeholder="search by product name">
+        <input type="text" name="searchArtist" placeholder="search by category">
+        <button type="submit">Search</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+            <% products.forEach((e, index)=> { %>
+                <tr>
+                    <td>
+                        <%= index + 1 %>
+                    </td>
+                    <td>
+                        <%= e.name %>
+                    </td>
+                    <td>
+                        <%= e.price %>
+                    </td>
+                    <td>
+                        <%= e.description %>
+                    </td>
+                    <td>
+                        <%= e.Category.name %>
+                    </td>
+                    <td>
+                        <a href="/products/edit/<%= e.id %>"><button>Edit</button></a>
+                        <a href="/products/<%= e.id %>/delete"><button>Delete</button></a>
+                    </td>
+                </tr>
+                <% }) %>
+        </thead>
+    </table>
+    <a href="/products/add"><button>Add Product</button></a>
+</body>
+
+</html>
