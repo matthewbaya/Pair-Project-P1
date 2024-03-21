@@ -8,8 +8,8 @@ npx sequelize  migration:create --name AddFKProduct
 
 
 
-Terdapat route untuk logout
 
-Terdapat static method di model
 
-Menggunakan berbagai macam validasi dari sequelize dan mengolahnya sehingga tampil pada page (lebih dari 1 jenis validasi, notEmpty dan  notNull dihitung 1 validasi)
+
+
+validasi kurang 1 macam.
