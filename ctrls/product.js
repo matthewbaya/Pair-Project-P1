@@ -52,7 +52,7 @@ class ProductCtrl {
   static async saveProduct(req, res) {
     try {
       let { name, price, description, CategoryId } = req.body;
-      let { picture } = req.file.picture;
+      let picture = req.file.picture;
       await Product.create({ name, price, description, CategoryId, picture });
       res.redirect("/");
     } catch (error) {
