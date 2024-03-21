@@ -16,9 +16,14 @@ class Register {
 
   static async saveRegister(req, res) {
     let { email, password } = req.body;
-    await UserDetail.create({ email, password });
-    res.redirect("/login");
     try {
+      let data = await UserDetail.create({
+        email,
+        password,
+        UserId: req.session.UserId,
+      });
+      res.redirect("/login");
+      // res.send(data);
     } catch (error) {
       console.log(error);
 

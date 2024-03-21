@@ -7,7 +7,7 @@ class Login {
     try {
       res.render("login-page", { error });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.send(error.message);
     }
   }
@@ -16,14 +16,17 @@ class Login {
     const { email, password } = req.body;
     try {
       const user = await UserDetail.findOne({ where: { email } });
+      console.log(user);
       if (user) {
         const isValidPassword = bcrypt.compareSync(password, user.password);
+        console.log(isValidPassword);
         if (isValidPassword) {
-          // case berhasil login
-          req.session.userId = user.id; // ini artinya ngasih jejak kalau user ini sedang login, set di controller
-          //   console.log(req.session)
-
-          res.redirect(`/`);
+          req.session.serId = user.id;
+          if (user.role === "admin") {
+            res.redirect(`/`);
+          } else {
+            res.redirect(`/customer`);
+          }
         } else {
           const error = `Password salah.`;
           res.redirect(`/login?error=${error}`);
@@ -33,7 +36,7 @@ class Login {
         res.redirect(`/login?error=${error}`);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.send(error.message);
     }
   }
