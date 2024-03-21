@@ -26,12 +26,13 @@
 </head>
 
 <body>
-    <h1>Landing Page</h1>
-    <h1>Welcome $user</h1>
+    <a href="/">page admin</a>
+    <h1><span style="color: red;">CUSTOMER </span>PAGE</h1>
+    <h1>Welcome $Customer</h1>
     <p>Search</p>
-    <form action="/" method="get">
-        <input type="text" name="searchTitle" placeholder="search by product name">
-        <input type="text" name="searchArtist" placeholder="search by category">
+    <form action="/products/customer" method="get">
+        <input type="text" name="searchTitle" placeholder="search product">
+        <input type="text" name="searchCategory" placeholder="search by category">
         <button type="submit">Search</button>
     </form>
     <table>
@@ -43,6 +44,7 @@
                 <th>Description</th>
                 <th>Created At</th>
                 <th>Category</th>
+                <th>Action</th>
             </tr>
             <% products.forEach((e, index)=> { %>
                 <tr>
@@ -63,6 +65,9 @@
                     </td>
                     <td>
                         <%= e.Category.name %>
+                    </td>
+                    <td>
+                        <a href="/detail/<%= e.id %>"><button>Detail</button></a>
                     </td>
                 </tr>
                 <% }) %>

@@ -25,9 +25,27 @@ module.exports = (sequelize, DataTypes) => {
 
   Product.init(
     {
-      name: DataTypes.STRING,
-      price: DataTypes.INTEGER,
-      description: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: false,
+          notNull: false
+        }
+      },
+      price: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: false,
+          notNull: false
+        }
+      },
+      description: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: false,
+          notNull: false
+        }
+      },
       CategoryId: {
         type: DataTypes.INTEGER,
         references: { model: "Category", key: "id" },

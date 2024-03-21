@@ -4,8 +4,10 @@ const ProductCtrl = require("../ctrls/product");
 const router = express.Router();
 
 router.get("/", ProductCtrl.showProducts);
+router.get("/customer", ProductCtrl.customerPage);
 router.get("/add", ProductCtrl.addProducts);
 router.post("/add", ProductCtrl.saveProduct);
+router.get("/detail/:productId", ProductCtrl.detailProducts);
 router.get("/edit/:productId", ProductCtrl.editProducts);
 router.post("/edit/:productId", ProductCtrl.postEditProducts);
 router.get("/:productId/order/:userId");
