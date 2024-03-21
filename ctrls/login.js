@@ -16,12 +16,12 @@ class Login {
     const { email, password } = req.body;
     try {
       const user = await UserDetail.findOne({ where: { email } });
-      console.log(user);
+
       if (user) {
         const isValidPassword = bcrypt.compareSync(password, user.password);
-        console.log(isValidPassword);
+
         if (isValidPassword) {
-          req.session.serId = user.id;
+          req.session.UserId = user.id;
           if (user.role === "admin") {
             res.redirect(`/`);
           } else {
