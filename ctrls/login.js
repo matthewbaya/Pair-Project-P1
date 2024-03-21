@@ -1,4 +1,4 @@
-const { UserDetail } = require("../models");
+const { UserDetail, User } = require("../models");
 const bcrypt = require("bcryptjs");
 
 class Login {
@@ -31,6 +31,11 @@ class Login {
           const error = `Password salah.`;
           res.redirect(`/login?error=${error}`);
         }
+
+        const username = `${user.email.substring(0, 1)}${
+          user.id
+        }${user.email.substring(4, 5)}`;
+        await User.create({ name: username });
       } else {
         const error = `Username tidak ada.`;
         res.redirect(`/login?error=${error}`);

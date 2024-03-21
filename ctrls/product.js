@@ -1,10 +1,10 @@
 "use strict";
-const { Op } = require('sequelize');
-const session = require('express-session');
+const { Op } = require("sequelize");
+const session = require("express-session");
 
 const { Product, User, Category } = require("../models");
 const product = require("../models/product");
-const { query } = require('express');
+const { query } = require("express");
 const {formatCurrency} = require("../helpers/formater");
 const { render } = require('ejs');
 
@@ -15,20 +15,20 @@ class ProductCtrl {
       let { searchProduct, searchCategory } = req.query;
       let options = {
         include: { model: Category, where: {} },
-        order: [['CategoryId', 'ASC']],
-        where: {}
-      }
+        order: [["CategoryId", "ASC"]],
+        where: {},
+      };
       if (searchProduct) {
         options.where.name = {
-          [Op.iLike]: `%${searchProduct}%`
-        }
+          [Op.iLike]: `%${searchProduct}%`,
+        };
       }
       if (searchCategory) {
         options.include.where = { name: { [Op.iLike]: `%${searchCategory}%` } };
       }
 
       let products = await Product.findAll(options);
-      res.render('landing-admin', { products, formatCurrency });
+      res.render("landing-admin", { products, formatCurrency });
     } catch (error) {
       console.log(error);
       res.send(error.message);
@@ -51,7 +51,8 @@ class ProductCtrl {
   static async saveProduct(req, res) {
     try {
       let { name, price, description, CategoryId } = req.body;
-      await Product.create({ name, price, description, CategoryId });
+      let { picture } = req.file.picture;
+      await Product.create({ name, price, description, CategoryId, picture });
       res.redirect("/");
     } catch (error) {
       console.log(error);
@@ -104,20 +105,20 @@ class ProductCtrl {
       let { searchProduct, searchCategory } = req.query;
       let options = {
         include: { model: Category, where: {} },
-        order: [['CategoryId', 'ASC']],
-        where: {}
-      }
+        order: [["CategoryId", "ASC"]],
+        where: {},
+      };
       if (searchProduct) {
         options.where.name = {
-          [Op.iLike]: `%${searchProduct}%`
-        }
+          [Op.iLike]: `%${searchProduct}%`,
+        };
       }
       if (searchCategory) {
         options.include.where = { name: { [Op.iLike]: `%${searchCategory}%` } };
       }
 
       let products = await Product.findAll(options);
-      res.render('landing-customer', { products, formatCurrency});
+      res.render("landing-customer", { products, formatCurrency});
     } catch (error) {
       console.log(error);
       res.send(error.message);

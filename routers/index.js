@@ -1,4 +1,5 @@
 const express = require("express");
+const Logout = require("../ctrls/logout");
 const router = express.Router();
 
 router.use("/register", require("./register"));
@@ -17,6 +18,6 @@ router.get("/", (req, res) => res.redirect("/products"));
 router.use("/products", require("./products"));
 router.use("/users", require("./users"));
 
-router.get("/logout");
+router.get("/logout", Logout.logOut);
 
 module.exports = router;
