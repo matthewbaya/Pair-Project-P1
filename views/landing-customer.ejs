@@ -42,6 +42,7 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>Description</th>
+                <th>Created At</th>
                 <th>Category</th>
                 <th>Action</th>
             </tr>
@@ -58,6 +59,9 @@
                     </td>
                     <td>
                         <%= e.description %>
+                    </td>
+                    <td>
+                        <%= e.formatDate %>
                     </td>
                     <td>
                         <%= e.Category.name %>
