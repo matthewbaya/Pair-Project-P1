@@ -14,10 +14,22 @@
         </p>
         <% } %>
             <form action="/register" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+                <label for="address">address</label>
+                <input type="text" id="address" name="address"><br>
+                <label for="dateOfBirth">Date of birth</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email">
+                <input type="text" id="email" name="email"><br>
                 <label for="password">Password</label>
-                <input type="text" id="password" name="password">
+                <input type="text" id="password" name="password"><br>
+                <label for="role">Role</label>
+                <select name="role" id="role">
+                    <option value="" selected disabled>-- select role --</option>
+                    <option value="admin">Admin</option>
+                    <option value="customer">Customer</option>
+                </select>
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
 

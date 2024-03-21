@@ -6,9 +6,10 @@ npx sequelize model:create --name Product --attributes name:string,price:integer
 
 npx sequelize  migration:create --name AddFKProduct
 
-    queryInterface.addColumn('Products', 'CategoryId', Sequelize.INTEGER, {
-      references:{
-        model: "Categories",
-        key: 'id'
-      }
-   });
+
+
+Terdapat route untuk logout
+
+Terdapat static method di model
+
+Menggunakan berbagai macam validasi dari sequelize dan mengolahnya sehingga tampil pada page (lebih dari 1 jenis validasi, notEmpty dan  notNull dihitung 1 validasi)

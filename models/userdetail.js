@@ -11,14 +11,26 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.User);
+      UserDetail.belongsTo(models.User, { foreignKey: "UserId" });
     }
   }
 
   UserDetail.init(
     {
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: false,
+          notNull: false
+        }
+      },
+      password: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: false,
+          notNull: false
+        }
+      },
       role: DataTypes.STRING,
       UserId: {
         type: DataTypes.INTEGER,

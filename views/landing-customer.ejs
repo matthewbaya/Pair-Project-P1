@@ -2,78 +2,59 @@
 <html lang="en">
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
+        body {
+            background-color: darkgrey;
         }
     </style>
 </head>
 
 <body>
-    <a href="/">page admin</a>
-    <h1><span style="color: red;">CUSTOMER </span>PAGE</h1>
-    <h1>Welcome $Customer</h1>
-    <p>Search</p>
-    <form action="/products/customer" method="get">
-        <input type="text" name="searchTitle" placeholder="search product">
-        <input type="text" name="searchCategory" placeholder="search by category">
-        <button type="submit">Search</button>
-    </form>
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Created At</th>
-                <th>Category</th>
-                <th>Action</th>
-            </tr>
+    <div class="container mt-3">
+        <a href="/logout">logout</a>
+        <h1><span style="color: red;">CUSTOMER </span>PAGE</h1>
+        <h1>Welcome</h1>
+
+        <form action="/products/customer" method="get">
+            <div class="row">
+                <div class="col-3 mb-3">
+                    <input type="text" name="searchProduct" placeholder="search product" class="form-control">
+                </div>
+                <div class="col-3 mb-3">
+                    <input type="text" name="searchCategory" placeholder="search by category" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="row d-flex justify-content-around">
             <% products.forEach((e, index)=> { %>
-                <tr>
-                    <td>
-                        <%= index + 1 %>
-                    </td>
-                    <td>
-                        <%= e.name %>
-                    </td>
-                    <td>
-                        <%= e.price %>
-                    </td>
-                    <td>
-                        <%= e.description %>
-                    </td>
-                    <td>
-                        <%= e.formatDate %>
-                    </td>
-                    <td>
-                        <%= e.Category.name %>
-                    </td>
-                    <td>
-                        <a href="/detail/<%= e.id %>"><button>Detail</button></a>
-                    </td>
-                </tr>
+                <div class="card col-4 mb-5" style="width: 18rem;">
+                    <img src="<%= e.picture %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= e.name %>
+                        </h5>
+                        <p class="card-text">
+                            <%= formatCurrency(e.price) %> <br>
+                                Category : <%= e.Category.name %>
+                        </p>
+                        <a href="/products/detail/<%= e.id %>" class="btn btn-primary">See product detail</a>
+                    </div>
+                </div>
                 <% }) %>
-        </thead>
-    </table>
-    <a href=""><button>Admin Page</button></a>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

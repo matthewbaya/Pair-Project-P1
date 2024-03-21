@@ -1,6 +1,5 @@
 "use strict";
 const { Model } = require("sequelize");
-const { date } = require("../helpers/formater");
 
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
@@ -19,10 +18,21 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     get formatDate() {
-      return date(this.createdAt);
+      let date = new Date(this.createdAt);
+      let today = new Date();
+
+      let min = Math.floor((today - date) / 60000);
+      let h = Math.floor(min / 60);
+      let m = min % 60;
+      if (h > 0) {
+        return `${h} hours ago`;
+      } else {
+        return `${m} minutes ago`;
+      }
     }
   }
 
+  
   Product.init(
     {
       name: {
@@ -49,6 +59,10 @@ module.exports = (sequelize, DataTypes) => {
       CategoryId: {
         type: DataTypes.INTEGER,
         references: { model: "Category", key: "id" },
+      },
+      picture: {
+        type: DataTypes.STRING,
+        defaultValue: 'https://www.the-sun.com/wp-content/uploads/sites/6/2023/10/www-instagram-com-monkeycatluna-hl-851711797.jpg?strip=all&w=960'
       },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,

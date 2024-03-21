@@ -1,6 +1,6 @@
 "use strict";
 
-const { UserDetail } = require("../models");
+const { UserDetail, User } = require("../models");
 
 class Register {
   //* ─── Register ────────────────────────────────────────────────────────
@@ -15,13 +15,15 @@ class Register {
   }
 
   static async saveRegister(req, res) {
-    let { email, password } = req.body;
+    let { name, address, dateOfBirth, email, password, role } = req.body;
     try {
-      let data = await UserDetail.create({
+      let user = await UserDetail.create({
         email,
         password,
+        role,
         UserId: req.session.UserId,
       });
+      await User.create({name, address, dateOfBirth, UserId: user.id})
       res.redirect("/login");
       // res.send(data);
     } catch (error) {
