@@ -14,7 +14,7 @@ class UserCtrl {
   }
 
   //* ─── Add User ─────────────────────────────────────────────────────
-  static async addProducts(req, res) {
+  static async ad(req, res) {
     try {
       res.render("");
     } catch (error) {
