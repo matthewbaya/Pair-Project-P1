@@ -1,5 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
+const { date } = require("../helpers/formater");
+
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     /**
@@ -14,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Shop,
         onDelete: "cascade",
       });
+    }
+
+    get formatDate() {
+      return date(this.createdAt);
     }
   }
 
