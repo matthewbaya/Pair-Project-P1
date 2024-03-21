@@ -1,7 +1,6 @@
 {
   "name": "pair-project-p1",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +17,6 @@
     "pg": "^8.11.3",
     "sequelize": "^6.37.1",
     "sequelize-cli": "^6.6.2"
-  }
+  },
+  "description": ""
 }
