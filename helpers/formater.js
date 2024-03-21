@@ -1,6 +1,6 @@
 "use strict";
 module.exports = {
-  date(value) {
-    return value.toLocaleString("id-ID");
-  },
+  formatCurrency(num) {
+    return num.toLocaleString("id-ID", {style: "currency", currency:"IDR"})
+  }
 };

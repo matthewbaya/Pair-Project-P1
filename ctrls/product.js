@@ -5,6 +5,8 @@ const session = require('express-session');
 const { Product, User, Category } = require("../models");
 const product = require("../models/product");
 const { query } = require('express');
+const {formatCurrency} = require("../helpers/formater");
+const { render } = require('ejs');
 
 class ProductCtrl {
   //* ─── Main Page ───────────────────────────────────────────────────────
@@ -26,7 +28,7 @@ class ProductCtrl {
       }
 
       let products = await Product.findAll(options);
-      res.render('landing-admin', { products });
+      res.render('landing-admin', { products, formatCurrency });
     } catch (error) {
       console.log(error);
       res.send(error.message);
@@ -115,7 +117,7 @@ class ProductCtrl {
       }
 
       let products = await Product.findAll(options);
-      res.render('landing-customer', { products });
+      res.render('landing-customer', { products, formatCurrency});
     } catch (error) {
       console.log(error);
       res.send(error.message);
@@ -124,7 +126,9 @@ class ProductCtrl {
 
   static async detailProducts(req, res) {
     try {
-      res.send(masuk);
+      let { productId } = req.params;
+      let product = await Product.findByPk(productId);
+      res.render('detail-product', {product})
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -133,7 +137,7 @@ class ProductCtrl {
 
   static async order(req, res) {
     try {
-      
+      res.send('masuk')
     } catch (error) {
       console.log(error);
       res.send(error.message);

@@ -25,7 +25,7 @@ class Login {
           if (user.role === "admin") {
             res.redirect(`/`);
           } else {
-            res.redirect(`/customer`);
+            res.redirect(`/products/customer`);
           }
         } else {
           const error = `Password salah.`;

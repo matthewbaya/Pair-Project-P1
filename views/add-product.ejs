@@ -23,6 +23,10 @@
             <textarea name="description" id="description" cols="30" rows="5"></textarea>
         </div>
         <div>
+            <label for="picture">Picture</label>
+            <input type="file" name="picture" id="picture" accept="image/*">
+        </div>
+        <div>
             <select name="CategoryId" id="">
                 <option value="" selected disabled>-- product category --</option>
                 <% category.forEach(e=> { %>
