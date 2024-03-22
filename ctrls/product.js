@@ -51,7 +51,7 @@ class ProductCtrl {
   static async saveProduct(req, res) {
     try {
       let { name, price, description, CategoryId } = req.body;
-      let picture = req.file;
+      let picture = req.file.filename;
       await Product.create({ name, price, description, CategoryId, picture });
       res.redirect("/");
     } catch (error) {
@@ -80,7 +80,8 @@ class ProductCtrl {
       let { productId } = req.params;
       let product = await Product.findByPk(productId, { include: Category });
       let category = await Category.findAll();
-      res.render("edit-product", { product, category });
+      let picture = req.file.filename;
+      res.render("edit-product", { product, category, picture });
     } catch (error) {
       console.log(error);
       res.send(error.message);
