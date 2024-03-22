@@ -135,7 +135,7 @@ class ProductCtrl {
     try {
       let { productId } = req.params;
       let product = await Product.findByPk(productId);
-      res.render("detail-product", { product });
+      res.render("detail-product", { product, formatCurrency });
     } catch (error) {
       console.log(error);
       res.send(error);

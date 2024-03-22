@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "cascade",
       });
     }
+getProductName(){
+      return `Product Name: ${this.name}`;
+    }
 
     get formatDate() {
       let date = new Date(this.createdAt);
@@ -31,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }
+
 
   
   Product.init(

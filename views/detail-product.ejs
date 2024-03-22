@@ -13,15 +13,14 @@
     <div class="container mt-3">
         <a href="/products/customer">home</a>
         <h1>Detail Product</h1>
-        <img src="" alt="">
-        <p>Product Name:</p>
+        <img src="<%= product.picture %>" alt="" width="200px">
+        <!-- <p>Product Name:</p> -->
         <h2>
-            <%= product.name %>
+            <%= product.getProductName() %>
         </h2>
-        <h3>Product Price :</h3>
-        <p>
-            <%= product.price %>
+        <p>Product Price : <%= formatCurrency(product.price) %>
         </p>
+
         <h3>Description:</h3>
         <p>
             <%= product.description %>
